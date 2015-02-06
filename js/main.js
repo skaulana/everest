@@ -51,6 +51,15 @@ function initialize() {
             console.log('failed to geolocate the user')
         });
     }
+
+    // sort clinics by distance to user
+    var userLat = map.getCenter().lat();
+    var userLng = map.getCenter().lng();
+    for(var i = 0; i < healthLoc.length; i++) {
+        var dist = getDistanceFromLatLonInKm(userLat, userLng, healthLoc[i][1], healthLoc[i][2]);
+        healthLoc[i]["dist"] = dist;
+    }
+    healthLoc.sort(function(a, b) { return a["dist"] - b["dist"]; });
     
     // add each clinic marker to the map
     for(var i = 0; i < healthLoc.length; i++) {
@@ -83,8 +92,11 @@ function render_map_locations() {
     
     for(var i = 0; i < healthLoc.length; i++) {
       $("#map-locations").append(
-        "<div class='map-item'><span class='glyphicon glyphicon-map-marker'></span> " +
-        healthLoc[i][0] + " </div>"
+        "<div class='map-item'>" +
+        "<em class='pull-right'>" + (+healthLoc[i]["dist"].toFixed(2)) + " km</em>" +
+        "<span class='glyphicon glyphicon-map-marker'></span> " +
+        healthLoc[i][0] +
+        "</div>"
       );
     }
 }
