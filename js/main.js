@@ -1,3 +1,5 @@
+// the "database" :)
+// todo: lobby NHIS for an API to get this dynamically...
   var healthLoc = [
   ["Adabraka Polyclinic", 5.562248893683982, -0.20480663719560466, "0302-688554", "Clinic"],
   ["Castle Clinic", 5.546992, -0.183419, "0244-611528/0302-666284", "Health Centre"],
@@ -24,6 +26,7 @@
   ["Wellness Laboratory Limited", 5.572214, -0.188495, "0244-275649/020-4275649/0302-767370-72", "Laboratory"]
   ];
   
+// helper to show/hide different 'page' divs
 function toggle_to(id) {
     $(".toggleable").addClass("hidden");
     $("#"+id).fadeIn(200).removeClass("hidden");
@@ -31,25 +34,38 @@ function toggle_to(id) {
     if (id == "page-map") initialize();
 }
 
-
-  function initialize() {
+// render the Google Map & locations for the clinics page
+function initialize() {
     var mapOptions = {
-      center: { lat: 5.562, lng: -0.198},
-      zoom: 15
+        center: { lat: 5.562, lng: -0.198},
+        zoom: 15
     };
-    var map = new google.maps.Map(document.getElementById('map-canvas'),
-      mapOptions);
-    
-  //Map Locations, name & coordinates
+    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-  for(var i=0; i<healthLoc.length; i++){
-    $("#hospital-places").append(i+1+")"+"  "+healthLoc[i][0]+"<br>")
-    var myCenter=new google.maps.Marker({
-      position:new google.maps.LatLng(healthLoc[i][1],healthLoc[i][2],healthLoc[i][3],healthLoc[i][4]),
-      map:map
-      //title:healthLoc[i][0]
-    });
-  }
+    // add each clinic marker to the map
+    for(var i = 0; i < healthLoc.length; i++) {
+        var myCenter = new google.maps.Marker({
+            position: new google.maps.LatLng(healthLoc[i][1],healthLoc[i][2],healthLoc[i][3],healthLoc[i][4]),
+            map: map
+            //title: healthLoc[i][0]
+        });
+    }
+  
+    // generate HTML for page
+    render_map_locations();
 }
 //google.maps.event.addDomListener(window, 'load', initialize);
 
+// basic template for map locations
+function render_map_locations() {
+    $("#map-locations").append(
+        "<h3>" + healthLoc.length + " " + (healthLoc.length == 1 ? "facility" : "facilities") +
+        " in Osu Klottey</h3>"
+    );
+    for(var i = 0; i < healthLoc.length; i++) {
+      $("#map-locations").append(
+        "<div class='map-item'><span class='glyphicon glyphicon-map-marker'></span> " +
+        healthLoc[i][0] + " </div>"
+      );
+    }
+}
