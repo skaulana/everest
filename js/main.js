@@ -49,10 +49,18 @@ function initialize() {
             map: map
             //title: healthLoc[i][0]
         });
+
+        var mapClickDelegate = (function (marker) {
+            return function() {
+                map.panTo(marker.getPosition());
+            };
+        })(myCenter);
+
+        google.maps.event.addListener(myCenter, 'click', mapClickDelegate);
     }
-  
+    
     // generate HTML for page
-    render_map_locations();
+    render_map_locations();    
 }
 //google.maps.event.addDomListener(window, 'load', initialize);
 
@@ -62,6 +70,7 @@ function render_map_locations() {
         "<h3>" + healthLoc.length + " " + (healthLoc.length == 1 ? "facility" : "facilities") +
         " in Osu Klottey</h3>"
     );
+    
     for(var i = 0; i < healthLoc.length; i++) {
       $("#map-locations").append(
         "<div class='map-item'><span class='glyphicon glyphicon-map-marker'></span> " +
