@@ -33,12 +33,22 @@
 
 
   function initialize() {
-    var mapOptions = {
+    
+
+  var mapOptions = {
       center: { lat: 5.562, lng: -0.198},
       zoom: 15
     };
     var map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
+      
+  if (navigator.geolocation)
+  {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+      map.setCenter(initialLocation);
+    }, function() {console.log('failed to geolocate the user')});
+  }
     
   //Map Locations, name & coordinates
 
