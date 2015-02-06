@@ -25,14 +25,16 @@ var healthLoc = [
     ["Vicdoris Pharmacy Limited", 5.569971, -0.212139, "0244-233418/0302-235145", "Pharmacy"],
     ["Wellness Laboratory Limited", 5.572214, -0.188495, "0244-275649/020-4275649/0302-767370-72", "Laboratory"]
 ];
-  
-// helper to show/hide different 'page' divs
-function toggle_to(id) {
+
+// super basic routing based on page hashes
+function toggle_page() {
     $(".toggleable").addClass("hidden");
-    $("#"+id).fadeIn(200).removeClass("hidden");
-    
-    if (id =="page-map") initialize();
+    $(window.location.hash).fadeIn(200).removeClass("hidden");
+    if (window.location.hash == "#page-map") initialize(); // for map
+    if (window.location.hash == "") $("#page-welcome").fadeIn(200).removeClass("hidden");
 }
+window.addEventListener("hashchange", toggle_page);
+function set_hash(h) { window.location.hash = h; }
 
 // render the Google Map & locations for the clinics page
 function initialize() {
