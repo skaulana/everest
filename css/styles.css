@@ -1,43 +1,52 @@
-html{ 
-  height:100%;
-  width: 100%;
-  margin: 0; 
-  
+html, body { 
+    height:100%;
+    width: 100%;
+    margin: 0;
 } 
-body{ 
-  height:100%;
-  width: 100%;
-  margin: 0; 
-
+/* main menu styles */
+.logo-treatment {
+    width: 65px;
+    height: 65px;
+    padding: 8px;
+    margin-right: 16px;
+    vertical-align: middle;
+    background: -webkit-linear-gradient(top, #fff, #ffe2ae);
+    background: -moz-linear-gradient(top, #fff, #ffe2ae);
+    background: -ms-linear-gradient(top, #fff, #ffe2ae);
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
-
-.row{
-  height:100%;
+.jumbo-treatment {
+    background: -webkit-linear-gradient(top, #eee1ff, #bee1ff);
+    background: -moz-linear-gradient(top, #eee1ff, #bee1ff);
+    background: -ms-linear-gradient(top, #eee1ff, #bee1ff);
+    border-bottom: 1px dotted #ccc;
 }
-.col-md-8{
-  height:300px;
-  width:200px;
+/* common styles for app pages */
+.fullpage {
+    height: 100%;
+    width: 100%;
+    position: fixed;
 }
-
-
+/* clinics map styles */
 #map-canvas{
-  height:100%;
-  width: 100%;
-  margin: 0; 
-  border: solid #000;
-  border-width: 2px;
-  float:left;
+    height: 40%;
+    width: 100%;
+    margin: 0;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    border: 1px dotted #ccc;
 }
-
-.col-md-4{
-  height:300px;
-  width:200px;
+#map-locations {
+    height: 60%;
+    width: 100%;
+    padding: 0px 5px;
+    position: absolute;
+    top: 40%;
+    left: 0px;
+    overflow-y: scroll;
 }
-
 #hospital-places{
-  height:100%;
-  width:100%;
   background-color: #c0c0c0;
-  float:right;
-  padding-left: 5px;
 }
