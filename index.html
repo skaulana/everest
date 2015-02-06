@@ -22,9 +22,18 @@
 
     <div class="container-fluid">
         <p>
-            <button type="button" class="btn btn-block btn-primary" onclick="toggle_to('page-map')">Find nearest NHIS accredited facility</button>
-            <button type="button" class="btn btn-block btn-primary" onclick="toggle_to('page-drugs')">Drugs covered under NHIS</button>
-            <button type="button" class="btn btn-block btn-primary">My NHIS subscription</button>
+            <button type="button" class="btn btn-block btn-primary" onclick="toggle_to('page-map')">
+                <span class="glyphicon glyphicon-map-marker"></span>
+                Find an NHIS accredited facility
+            </button>
+            <button type="button" class="btn btn-block btn-primary" onclick="toggle_to('page-drugs')">
+                <span class="glyphicon glyphicon-align-left"></span>
+                Drugs covered under NHIS
+            </button>
+            <button type="button" class="btn btn-block btn-primary" onclick="toggle_to('page-sub')">
+                <span class="glyphicon glyphicon-user"></span>
+                My NHIS subscription
+            </button>
         </p>
         <br />
         <p>
@@ -34,7 +43,6 @@
 </div>
 
 <div id="page-map" class="fullpage hidden toggleable">
-
     <div id="map-canvas">
         Loading...
     </div>
@@ -43,6 +51,14 @@
         <h3>Hospital Locations in Osu Klottey</h3>
         <div id="hospital-places"></div>
     </div>
+</div>
+
+<div id="page-drugs" class="hidden toggleable container-fluid">
+    <p>Coming soon...</p>
+</div>
+
+<div id="page-sub" class="hidden toggleable container-fluid">
+    <p>Coming soon...</p>
 </div>
 
 </body>
