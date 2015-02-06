@@ -24,12 +24,12 @@
   ["Wellness Laboratory Limited", 5.572214, -0.188495, "0244-275649/020-4275649/0302-767370-72", "Laboratory"]
   ];
   
-function toggle_to(id) {
+  function toggle_to(id) {
     $(".toggleable").addClass("hidden");
     $("#"+id).fadeIn(200).removeClass("hidden");
     
-    if (id == "page-map") initialize();
-}
+    if (id =="page-map") initialize();
+  }
 
 
   function initialize() {
@@ -49,6 +49,9 @@ function toggle_to(id) {
       map:map
       //title:healthLoc[i][0]
     });
+
+
+
   }
 }
 //google.maps.event.addDomListener(window, 'load', initialize);
