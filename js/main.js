@@ -98,13 +98,14 @@ function initialize() {
             //title: healthLoc[i][0]
         });
 
-        var mapClickDelegate = (function (marker) {
+        function mapClickDelegate (marker, i) {
             return function() {
                 map.panTo(marker.getPosition());
+                rerender_just(i);
             };
-        })(myCenter);
+        };
 
-        google.maps.event.addListener(myCenter, 'click', mapClickDelegate);
+        google.maps.event.addListener(myCenter, 'click', mapClickDelegate(myCenter, i));
     }
     
     // generate HTML for page
@@ -121,13 +122,26 @@ function render_map_locations() {
     
     for(var i = 0; i < healthLoc.length; i++) {
       $("#map-locations").append(
-        "<div class='map-item'>" +
+        "<div class='map-item' onclick='rerender_just("+i+")'>" +
         "<em class='pull-right'>" + (+healthLoc[i]["dist"].toFixed(2)) + " km</em>" +
         "<span class='glyphicon glyphicon-map-marker'></span> " +
         healthLoc[i][0] +
         "</div>"
       );
     }
+
+    $('.map-item').each(function () { $(this).collapse(); });
+}
+
+function rerender_just(i) {
+   $('#map-locations').html(
+        "<div class='map-item itemindex-"+ i + "'>" +
+        "<em class='pull-right'>" + (+healthLoc[i]["dist"].toFixed(2)) + " km</em>" +
+        "<span class='glyphicon glyphicon-map-marker'></span> " +
+        healthLoc[i][0] +
+        "<br /><p>Type: " + healthLoc[i][4] + "</p>" +
+        "<p>Call: " + healthLoc[i][3] + "</p></div>"
+    );
 }
 
 // basic template for drugs
