@@ -33,6 +33,7 @@ function toggle_page() {
     if (window.location.hash == "#page-map") initialize(); // for map
     if (window.location.hash == "") $("#page-welcome").fadeIn(200).removeClass("hidden");
 }
+window.location.hash = ""; // clear hash on reload
 window.addEventListener("hashchange", toggle_page);
 function set_hash(h) { window.location.hash = h; }
 
