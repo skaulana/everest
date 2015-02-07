@@ -56,6 +56,7 @@ function toggle_page() {
     $(".toggleable").addClass("hidden");
     $(window.location.hash).fadeIn(200).removeClass("hidden");
     if (window.location.hash == "#page-map") initialize(); // for map
+    if (window.location.hash == "#page-drugs") render_drug_list(); // for drugs
     if (window.location.hash == "") $("#page-welcome").fadeIn(200).removeClass("hidden");
 }
 window.location.hash = ""; // clear hash on reload
@@ -127,4 +128,31 @@ function render_map_locations() {
         "</div>"
       );
     }
+}
+
+// basic template for drugs
+function render_drug_list() {
+    for (var i = 0; i < healthMed.length; i++) {
+        $("#drug-list").append(
+            "<div class='drug-item' data-drugname='" + healthMed[i][0] + "'>" +
+            "<span class='glyphicon glyphicon-ok'></span> " +
+            healthMed[i][0] + "<br /><em>" + healthMed[i][2] + "GHS per " + healthMed[i][1] + "</em></div>"
+        );
+    }
+    
+    // initialize bootstrap's collapsible behavior
+    $('.drug-item').each(function () { $(this).collapse(); });
+    
+    $("#drug-filter").change(function () {
+        var filter = $("#drug-filter").val().toLowerCase();
+        $('.drug-item').each(function (i) {
+            var drug = $(this).data( "drugname" ).toLowerCase();
+            if (drug.indexOf(filter) > -1) {
+                $(this).collapse('show');
+            }
+            else {
+                $(this).collapse('hide');
+            }
+        });
+    });
 }

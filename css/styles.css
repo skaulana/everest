@@ -47,7 +47,7 @@ html, body {
     left: 0px;
     overflow-y: scroll;
 }
-.map-item {
+.map-item, .drug-item {
     border: 1px solid #ccc;
     margin-bottom: 5px;
     padding: 3px;
