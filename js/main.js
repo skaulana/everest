@@ -1,5 +1,7 @@
 // the "database" :)
 // todo: lobby NHIS for an API to get this dynamically...
+
+// clinics: name, lat, long, phone(s), type
 var healthLoc = [
     ["Adabraka Polyclinic", 5.562248893683982, -0.20480663719560466, "0302-688554", "Clinic"],
     ["Castle Clinic", 5.546992, -0.183419, "0244-611528/0302-666284", "Health Centre"],
@@ -24,6 +26,29 @@ var healthLoc = [
     ["Angola Road Chemist", 5.557445, -0.187432, "020-8185704/0302-223768", "Pharmacy"],
     ["Vicdoris Pharmacy Limited", 5.569971, -0.212139, "0244-233418/0302-235145", "Pharmacy"],
     ["Wellness Laboratory Limited", 5.572214, -0.188495, "0244-275649/020-4275649/0302-767370-72", "Laboratory"]
+];
+// drugs: name, dosage, GH¢ price per dose
+var healthMed = [
+    ["Acetazolamide Injection", "500 mg Ampoule", 22],
+    ["Acetazolamide", "250 mg Tablet", 0.1],
+    ["Acetylcysteine Injection", "1 mL", 7.8],
+    ["Acetylsalicylic Acid Tablet", "300 mg", 0.03],
+    ["Acetylsalicylic Acid Dispersible Tablet", "75 mg", 0.03],
+    ["Activated Charcoal Powder", "50 g", 8],
+    ["Acyclovir Cream (5%)", "5 g", 7],
+    ["Acyclovir Eye Ointment (3%)", "2 g", 14.2],
+    ["Acyclovir Injection Vial", "250 mg", 35],
+    ["Acyclovir Suspension", "20 mL", 65],
+    ["Acyclovir Tablet", "200 mg", 0.8],
+    ["Adrenaline Injection (1:1,000)", "1 mL", 0.5],
+    ["Adrenaline Injection (1:10,000)", "1 mL", 5.2],
+    ["Adriamycin Injection", "50 mg", 35],
+    ["Albendazole Syrup", "20 mL", 1.4],
+    ["Albendazole Tablet", "200 mg", 0.8],
+    ["Albendazole Tablet", "400 mg", 1.6],
+    ["Allopurinol Tablet", "100 mg", 0.13],
+    ["Allopurinol Tablet", "300 mg", 0.15],
+    ["Aluminium Hydroxide Mixture", "200 mL", 2.3]
 ];
 
 // super basic routing based on page hashes
